@@ -1,7 +1,7 @@
 <?php
 
 $socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
-socket_connect($socket, '127.0.0.1', 15599);
+socket_connect($socket, '127.0.0.1', 8080);
 
 $data = [];
 $data['name'] = 'junping';

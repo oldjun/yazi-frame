@@ -85,7 +85,6 @@ bool Workflow::run(const string &work, const string &input, string &output)
 
 bool Workflow::load_plugin(Work* work, Element & elem)
 {
-    PluginHelper * helper = Singleton<PluginHelper>::instance();
     for (Element::iterator it = elem.begin(); it != elem.end(); it++)
     {
         if (it->name() != "plugin")
@@ -94,7 +93,7 @@ bool Workflow::load_plugin(Work* work, Element & elem)
             return false;
         }
         const string & name = it->attr("name");
-        create_func func = (create_func)helper->get(name, "create");
+        create_func func = (create_func)Singleton<PluginHelper>::instance()->get(name, "create");
         Plugin *plugin = func();
         plugin->set_name(name);
 
